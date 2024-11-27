@@ -1,0 +1,44 @@
+@import url(index.css);
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+
+  img {
+    max-width: 500px;
+    max-height: 400px;
+    border: 2px solid bisque;
+    border-radius: 20%;
+    box-shadow: 5px 5px var(--CobaltBlue);
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+
+    input {
+      &:nth-child(8) {
+        background: var(--OrangeyYellow);
+      }
+      &:nth-child(5) {
+        background: var(--GreenTeal);
+      }
+      &:nth-child(6) {
+        background: var(--LightSlateBlue);
+      }
+      &:nth-child(7) {
+        background: var(--LightRed);
+      }
+      &:hover {
+        background-color: var(--PersianBlue);
+        color: aliceblue;
+        font-weight: bold;
+        font-size: medium;
+        cursor: crosshair;
+      }
+    }
+  }
+}
