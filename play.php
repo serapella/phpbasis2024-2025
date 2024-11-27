@@ -1,8 +1,8 @@
 <?php
 
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 
 include('db.inc.php');
@@ -23,6 +23,8 @@ $correct = @$_POST["correct"] ?: 0;
 $theme = @$_POST["theme"] ?: 0;
 
 
+
+
 if (isset($_POST["option"])) {
     $total++;
     $chosenOption = $_POST["option"];
@@ -32,17 +34,25 @@ if (isset($_POST["solution"])) {
     $oldWord = $_POST['solution'];
 } //is er een woord gegeven?
 
-$options = array_rand($fullArray, 4);
+$numOptions = min(count($fullArray), 4);
+
+$options = array_rand($fullArray, $numOptions);
 $optionsComplete = [];
 foreach ($options as $option) {
     $optionsComplete[] = $fullArray[$option];
 }
+
+
 
 shuffle($optionsComplete);
 // andere optie van de vier als woord kiezen indien gelijk aan vorige woord
 do {
     $newWord = $optionsComplete[array_rand($optionsComplete)];
 } while ($newWord['solution'] == $oldWord);
+
+if (count($optionsComplete) > 0) {
+    $newWord = $optionsComplete[array_rand($optionsComplete)];
+}
 
 // $errors = [];
 // $success = null;
